@@ -40,6 +40,5 @@ env/
 results/
 outputs/
 checkpoints/
-models/
 *.pt
 *.pth
