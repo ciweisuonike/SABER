@@ -1,0 +1,115 @@
+# ==================================================
+# Ablation configuration without two-view/source consistency
+# ==================================================
+
+reproducibility:
+  seed: 42
+  deterministic: false
+
+reference_subset:
+  n_cells: null
+
+simulation:
+  K: 10000
+  N: 500
+  n_batches: 1000
+  celltype_col: celltype
+  top_genes: 5000
+  # Number of target bulk samples used for gene selection and MMD; null uses all.
+  n_target_sample_to_train: null
+  enable_gene_selection: true
+  marker_genes_per_celltype: 150
+  min_pct_in_celltype: 0.05
+  min_logfc: 0.25
+  enable_target_stability_filter: true
+  source_zero_threshold: 0.9
+  target_zero_threshold: 0.9
+  target_min_variance_quantile: 0.05
+  source_target_shift_threshold: 3.0
+  target_high_expression_quantile: 0.75
+  # Soft tolerance: source-target shift at or below this value is not penalized.
+  stability_soft_threshold: 0.5
+  stability_gamma: 1.0
+  stability_pseudobulk_samples: 512
+  # Source observed-view technical perturbation switch.
+  enable_twoview: false
+  prob_ref_aug: 0.5
+  prob_batch_inj: 0.5
+  enable_confidence_gene_dropout: false
+  # Range: [0, 1)
+  confidence_gene_dropout_max: 0.8
+  # Range: > 0
+  confidence_gene_dropout_kappa: 1.5
+  # Range: (0, 1]
+  confidence_gene_dropout_retention: 0.25
+  reference_col: reference
+  enable_reference_stability_filter: true
+  reference_min_cells_per_group: 10
+  reference_celltype_quantile: 0.75
+  reference_hard_filter_quantile: 0.95
+  # Soft tolerance: reference dispersion at or below this value is not penalized.
+  reference_stability_soft_threshold: 1.0
+  reference_stability_gamma: 1.0
+  n_pseudo_banks: 10
+  n_conditions: 1000
+  condition_col: null
+  concentration_factor: 1.0
+  enable_missing_celltypes: true
+  # Fraction range: [0, 1]
+  missing_celltype_fraction: 0.2
+  min_celltypes_per_sample: 2
+  enable_dominant_celltypes: true
+  # Fraction range: [0, 1]
+  dominant_sample_fraction: 0.2
+  # Require: 0 <= min_dominant_fraction <= max_dominant_fraction <= 1
+  min_dominant_fraction: 0.4
+  max_dominant_fraction: 0.95
+  n_batch_factors: 3
+  affected_gene_range:
+  - 500
+  - 3000
+  log_uk_range:
+  - -10
+  - 10
+  sigma_k_range:
+  - 0.05
+  - 0.2
+  individual_gene_variance: 0.1
+  gaussian_noise_level: 0.1
+  batch_dropout_range:
+  - 0.01
+  - 0.05
+  sample_variance_dropout: 0.005
+  dropout_expression_threshold:
+  - 3.0
+  - 5.0
+  - 10.0
+  - 20.0
+  dropout_enhancement_factor:
+  - 25.0
+  - 12.5
+  - 6.25
+  - 3.0
+model:
+  prop_dim: 64
+  encoder_hidden_dim: 128
+  dropout_rate: 0.1
+  proportion_head_hidden_dim: 256
+loss:
+  lambda_prop: 1.0
+  lambda_local_mmd: 0.01
+  lambda_consistency_source: 0.0
+  lambda_consistency_latent: 0.0
+dataloader:
+  batch_size: 128
+  train_ratio: 0.8
+training:
+  enable_alignment: true
+  finetune_update_scope: encoder_last_linear
+  local_mmd_tau: 10.0
+  epochs:
+    pretrain: 40
+    finetune: 10
+  learning_rates:
+    pretrain: 0.001
+    finetune: 0.0001

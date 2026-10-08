@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environments
+.env/
+.venv/
+venv/
+env/
+
+# Editors and operating-system files
+.DS_Store
+.vscode/
+.idea/
+
+# Large biological data
+*.h5ad
+!examples/GSE84133_subset.h5ad
+*.h5
+*.loom
+*.rds
+*.RData
+*.bam
+*.sam
+*.fastq
+*.fastq.gz
+*.tar.gz
+
+# Generated models and outputs
+*.log
+results/
+outputs/
+checkpoints/
+models/
+*.pt
+*.pth

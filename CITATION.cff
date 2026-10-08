@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use SABER, please cite this software using the metadata below."
+title: "SABER: stability-aware bulk RNA-seq deconvolution"
+type: software
+authors:
+  - name: "SABER developers"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/ciweisuonike/SABER"
+url: "https://github.com/ciweisuonike/SABER"

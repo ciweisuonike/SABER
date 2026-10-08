@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "saber-deconv"
+version = "0.1.0"
+description = "SABER: bulk RNA-seq deconvolution with simulated source training and local MMD adaptation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = [
+  "bulk RNA-seq",
+  "single-cell RNA-seq",
+  "deconvolution",
+  "domain adaptation",
+  "MMD"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+dependencies = [
+  "numpy>=1.26.4",
+  "pandas>=2.2.3",
+  "scipy>=1.15.3",
+  "scanpy>=1.11.4",
+  "anndata>=0.11.3",
+  "PyYAML>=6.0.2",
+  "tqdm>=4.67.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest"
+]
+
+[project.scripts]
+saber = "saber.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ciweisuonike/SABER"
+Repository = "https://github.com/ciweisuonike/SABER"
+Issues = "https://github.com/ciweisuonike/SABER/issues"
+
+[tool.setuptools.packages.find]
+include = ["saber*"]
