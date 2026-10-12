@@ -10,6 +10,8 @@ The associated manuscript is currently in preparation.
 
 ### Installation
 
+Install Git and Conda. On Windows, use Anaconda Prompt; configured CMD or PowerShell also works. On Linux/macOS, use a terminal with Conda initialized.
+
 Clone this repository and create the provided base Conda environment:
 
 ```bash
@@ -25,12 +27,6 @@ For CPU execution on Linux or Windows:
 
 ```bash
 pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
-```
-
-For CPU execution on macOS:
-
-```bash
-pip install torch==2.6.0
 ```
 
 For NVIDIA GPU execution, install the wheel matching your CUDA environment. PyTorch 2.6.0 provides CUDA 11.8, 12.4 and 12.6 builds; for example, for CUDA 12.4:
@@ -86,14 +82,10 @@ The `celltype` column is required. An optional `reference` column can be provide
 
 `saber prop` trains SABER using the single-cell reference and target bulk data, then predicts cell-type proportions for the input bulk samples:
 
-```bash
-saber prop \
-  --adata /path/to/reference.h5ad \
-  --bulk /path/to/bulk.csv \
-  --config configs/config.yaml \
-  --prop-dir output/proportions \
-  --model-dir output/model \
-  --device cpu
+Run from the repository root after `conda activate saber`, replacing the input paths with your files:
+
+```text
+saber prop --adata "path/to/reference.h5ad" --bulk "path/to/bulk.csv" --config "configs/config.yaml" --prop-dir "output/proportions" --model-dir "output/model" --device cpu
 ```
 
 The predicted proportions are written to `output/proportions/proportions.csv`. When `--model-dir` is provided, the trained model is saved as `output/model/model.pt`.
@@ -102,12 +94,8 @@ The predicted proportions are written to `output/proportions/proportions.csv`. W
 
 `saber prop-predict` loads a previously trained model and predicts proportions for another bulk expression matrix:
 
-```bash
-saber prop-predict \
-  --model output/model/model.pt \
-  --bulk /path/to/new_bulk.csv \
-  --prop-dir output/new_predictions \
-  --device cpu
+```text
+saber prop-predict --model "output/model/model.pt" --bulk "path/to/new_bulk.csv" --prop-dir "output/new_predictions" --device cpu
 ```
 
 The new bulk matrix must use gene identifiers compatible with those stored in the trained model.
@@ -122,7 +110,26 @@ The `examples/` directory provides a compact, directly runnable pancreas example
 | `GSE50244_expression.csv` | The sample-by-gene raw-count matrix from [GSE50244](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE50244). |
 | `GSE50244_metadata.csv` | GEO metadata for GSE50244.|
 
-Open `examples/analysis.ipynb` to run SABER and plot the association between the predicted beta-cell proportion and HbA1c.
+#### Step 1. Run SABER
+
+With the `saber` environment activated, run from the repository root:
+
+```text
+cd examples
+saber prop --adata "GSE84133_subset.h5ad" --bulk "GSE50244_expression.csv" --config "config.yaml" --prop-dir "results" --prefix GSE50244_SABER --device cpu
+```
+
+The predicted proportions are saved to `examples/results/GSE50244_SABER.csv`. Wait for training and prediction to finish before continuing.
+
+#### Step 2. Run analysis.ipynb
+
+From the same `examples` directory, open the notebook using the activated environment:
+
+```text
+jupyter notebook analysis.ipynb
+```
+
+If Jupyter Notebook is not installed, run `python -m pip install notebook` first. Run the single plotting cell to match predictions with HbA1c metadata, display the scatter plot and fitted linear relationship, and save `hba1c_beta_scatter.pdf` and `hba1c_beta_scatter.png` in `examples/results/`.
 
 ## Experiments
 
