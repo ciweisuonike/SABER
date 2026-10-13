@@ -140,8 +140,8 @@ def run_prop_cli(args):
 
 def run_prop_train_cli(args):
     import yaml
-    import torch
     import scanpy as sc
+    import torch
     import pandas as pd
 
     from saber.pipeline.prop_train import run_prop_train_from_scRNAseq
