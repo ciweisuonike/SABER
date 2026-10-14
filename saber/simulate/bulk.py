@@ -534,7 +534,7 @@ def _apply_batch_effects(X, batch_ids, n_batch_factors, affected_gene_range, log
         batch_idx = np.where(batch_ids == b)[0]
 
         for factor_idx in range(n_batch_factors):
-            n_affected = np.random.randint(*affected_gene_range)
+            n_affected = min(np.random.randint(*affected_gene_range), G)
             affected_genes = np.random.choice(G, size=n_affected, replace=False)
 
             log_uk = np.random.uniform(*log_uk_range)
