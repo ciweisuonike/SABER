@@ -121,7 +121,7 @@ MODE_CONFIG = {
     "benchmark": {
         "methods": ["SABER", "DWLS", "BayesPrism", "Scadenpytorch", "TAPE", "RNASieve", "NNLS"],
         "labels": {
-            "SABER": "SABER", "DWLS": "DWLS", "BayesPrism": "BayesPrism",
+            "SABER": "SABER-DC", "DWLS": "DWLS", "BayesPrism": "BayesPrism",
             "Scadenpytorch": "Scaden", "TAPE": "TAPE", "RNASieve": "RNASieve", "NNLS": "NNLS",
         },
         "colors": {
@@ -137,17 +137,17 @@ MODE_CONFIG = {
             "SABER_w_gene_selection", "SABER_w_twoview", "SABER_w_alignment", "SABER_wo_all",
         ],
         "labels": {
-            "SABER": "SABER", "SABER_w_gene_selection": "w_gene_selection",
+            "SABER": "SABER-DC", "SABER_w_gene_selection": "w_gene_selection",
             "SABER_wo_gene_selection": "wo_gene_selection", "SABER_w_twoview": "w_twoview",
             "SABER_wo_twoview": "wo_twoview", "SABER_w_alignment": "w_alignment",
             "SABER_wo_alignment": "wo_alignment", "SABER_wo_all": "wo_all",
         },
         "colors": {
-            "SABER": "#C95F5F", "wo_alignment": "#A6DBA0", "wo_twoview": "#67A9CF",
+            "SABER-DC": "#C95F5F", "wo_alignment": "#A6DBA0", "wo_twoview": "#67A9CF",
             "wo_gene_selection": "#EF8A62", "w_gene_selection": "#B2182B", "w_twoview": "#2166AC",
             "w_alignment": "#4D9221", "wo_all": "#636363",
         },
-        "title": "SABER ablation",
+        "title": "SABER-DC ablation",
         "reference_name": "SABER",
     },
 }

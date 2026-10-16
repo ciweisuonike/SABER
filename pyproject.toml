@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "saber-deconv"
 version = "0.1.0"
-description = "SABER: bulk RNA-seq deconvolution with simulated source training and local MMD adaptation"
+description = "SABER-DC: bulk RNA-seq deconvolution with simulated source training and local MMD adaptation"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -43,9 +43,9 @@ dev = [
 saber = "saber.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/ciweisuonike/SABER"
-Repository = "https://github.com/ciweisuonike/SABER"
-Issues = "https://github.com/ciweisuonike/SABER/issues"
+Homepage = "https://github.com/ciweisuonike/SABER-DC"
+Repository = "https://github.com/ciweisuonike/SABER-DC"
+Issues = "https://github.com/ciweisuonike/SABER-DC/issues"
 
 [tool.setuptools.packages.find]
 include = ["saber*"]

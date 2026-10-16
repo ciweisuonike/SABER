@@ -1,8 +1,8 @@
-# SABER: stability-aware bulk RNA-seq deconvolution
+# SABER-DC: domain-Shift-Aware Bulk Expression modeling enables Robust cell-type DeConvolution
 
-![SABER](https://img.shields.io/badge/SABER-v0.1.0-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![SABER-DC](https://img.shields.io/badge/SABER--DC-v0.1.0-blue) ![License](https://img.shields.io/badge/license-MIT-green)
 
-SABER is a single-cell-reference-guided framework for estimating cell-type proportions from bulk RNA-seq data under source–target distribution shifts.
+SABER-DC is a single-cell-reference-guided framework for estimating cell-type proportions from bulk RNA-seq data under source–target distribution shifts.
 
 The associated manuscript is currently in preparation.
 
@@ -15,13 +15,13 @@ Install Git and Conda. On Windows, use Anaconda Prompt; configured CMD or PowerS
 Clone this repository and create the provided base Conda environment:
 
 ```bash
-git clone https://github.com/ciweisuonike/SABER.git
-cd SABER
+git clone https://github.com/ciweisuonike/SABER-DC.git
+cd SABER-DC
 conda env create -f environment.yml
 conda activate saber
 ```
 
-PyTorch is installed separately so that you can select the build appropriate for your hardware. SABER was developed with PyTorch 2.6.0. Install one of the following options.
+PyTorch is installed separately so that you can select the build appropriate for your hardware. SABER-DC was developed with PyTorch 2.6.0. Install one of the following options.
 
 For CPU execution on Linux or Windows:
 
@@ -35,7 +35,7 @@ For NVIDIA GPU execution, install the wheel matching your CUDA environment. PyTo
 pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
-Replace `cu124` with `cu118` or `cu126` when appropriate. Then install SABER:
+Replace `cu124` with `cu118` or `cu126` when appropriate. Then install SABER-DC:
 
 ```bash
 pip install .
@@ -43,13 +43,13 @@ pip install .
 
 ### Running
 
-SABER requires a single-cell reference, a target bulk expression matrix and a YAML configuration file.
+SABER-DC requires a single-cell reference, a target bulk expression matrix and a YAML configuration file.
 
 | Input | Format | Required structure |
 | --- | --- | --- |
 | Single-cell reference | AnnData `.h5ad` | Cells × genes in `adata.X`; cell annotations in `adata.obs` |
 | Target bulk expression | `.csv` | Samples × genes; the first column contains sample identifiers |
-| Configuration | `.yaml` | SABER simulation, model and training settings |
+| Configuration | `.yaml` | SABER-DC simulation, model and training settings |
 
 **`adata.X` must contain raw counts. Do not provide log1p-transformed, normalized or otherwise scaled expression values.**
 
@@ -80,7 +80,7 @@ The `celltype` column is required. An optional `reference` column can be provide
 
 #### Train and predict directly
 
-`saber prop` trains SABER using the single-cell reference and target bulk data, then predicts cell-type proportions for the input bulk samples:
+`saber prop` trains SABER-DC using the single-cell reference and target bulk data, then predicts cell-type proportions for the input bulk samples:
 
 Run from the repository root after `conda activate saber`, replacing the input paths with your files:
 
@@ -110,7 +110,7 @@ The `examples/` directory provides a compact, directly runnable pancreas example
 | `GSE50244_expression.csv` | The sample-by-gene raw-count matrix from [GSE50244](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE50244). |
 | `GSE50244_metadata.csv` | GEO metadata for GSE50244.|
 
-#### Step 1. Run SABER
+#### Step 1. Run SABER-DC
 
 With the `saber` environment activated, run from the repository root:
 
@@ -137,7 +137,7 @@ The analysis scripts used for the PBMC, pancreatic-islet, IPF, cancer and cross-
 
 ## Issues
 
-If you encounter a problem when using SABER, please open an issue in this repository.
+If you encounter a problem when using SABER-DC, please open an issue in this repository.
 
 ## Citation
 

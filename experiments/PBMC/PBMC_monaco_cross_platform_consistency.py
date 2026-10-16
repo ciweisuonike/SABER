@@ -32,7 +32,7 @@ ABLATION_METHODS = [
     "SABER_wo_all",
 ]
 METHOD_LABELS = {
-    "SABER": "SABER",
+    "SABER": "SABER-DC",
     "Scadenpytorch": "Scaden",
     "RNASieve": "RNASieve",
     "NNLS": "NNLS",

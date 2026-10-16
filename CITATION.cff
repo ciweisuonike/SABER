@@ -1,10 +1,10 @@
 cff-version: 1.2.0
-message: "If you use SABER, please cite this software using the metadata below."
-title: "SABER: stability-aware bulk RNA-seq deconvolution"
+message: "If you use SABER-DC, please cite this software using the metadata below."
+title: "SABER-DC: domain-Shift-Aware Bulk Expression modeling enables Robust cell-type DeConvolution"
 type: software
 authors:
   - name: "SABER developers"
 version: 0.1.0
 license: MIT
-repository-code: "https://github.com/ciweisuonike/SABER"
-url: "https://github.com/ciweisuonike/SABER"
+repository-code: "https://github.com/ciweisuonike/SABER-DC"
+url: "https://github.com/ciweisuonike/SABER-DC"
